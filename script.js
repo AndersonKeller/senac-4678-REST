@@ -15,12 +15,34 @@ function init(){
         const form = document.querySelector("form")
     form.addEventListener("submit",(event)=>{
         event.preventDefault()
-        createUser()
+        // createUser()
         // updateUser()
         // removeUser()
+        openModal()
     })
+    
 }
 init()
+
+function openModal(){
+    const body = document.body
+   
+    body.insertAdjacentHTML("beforeend",`
+        <div class="wrapper">
+        <div class="modal">
+            <button id="close">X</button>
+            <p>deseja realmente excluir essa pessoa:?</p>
+        </div>
+    </div>
+        `)
+        const close = document.querySelector("#close")
+    close.addEventListener("click",()=>{
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+    })
+}
+
+
 async function createUser(){
     const name = document.querySelector("#name")
     const email = document.querySelector("#email")
