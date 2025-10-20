@@ -15,10 +15,10 @@ function init(){
         const form = document.querySelector("form")
     form.addEventListener("submit",(event)=>{
         event.preventDefault()
-        // createUser()
+        createUser()
         // updateUser()
         // removeUser()
-        openModal()
+        // openModal()
     })
     
 }
@@ -31,7 +31,7 @@ function openModal(){
         <div class="wrapper">
         <div class="modal">
             <button id="close">X</button>
-            <p>deseja realmente excluir essa pessoa:?</p>
+            <p>Algo deu errado! tente novamente</p>
         </div>
     </div>
         `)
@@ -42,7 +42,18 @@ function openModal(){
     })
 }
 
-
+function toastify(tipo,mensagem){
+    document.body.insertAdjacentHTML("beforeend",`
+            <div class="toastify ${tipo}">
+        <p>${mensagem}</p>
+    </div>
+        `)
+        const toas= document.querySelector(".toastify")
+        setTimeout(() => {
+            
+            toas.remove()
+        }, 3000);
+}
 async function createUser(){
     const name = document.querySelector("#name")
     const email = document.querySelector("#email")
@@ -56,8 +67,13 @@ async function createUser(){
         body:JSON.stringify(usuario)
     })
     console.log(response,"response")
-    const users = await response.json()
-    console.log(users,"users")
+    if(response.ok){
+        const users = await response.json()
+        console.log(users,"users")
+        toastify("sucesso","usuário ou senha inválidos")
+    }else {
+        toastify("sucesso","login efetuado com sucesso!")
+    }
 }
 
 async function updateUser(){
