@@ -92,6 +92,7 @@ async function updateUser(){
     console.log(user,"user atualizado")
     
 }
+
 async function removeUser(){
     const response = await fetch(`${baseUrl}/users/1`,{
         method:"DELETE"
