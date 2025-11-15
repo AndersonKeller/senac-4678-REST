@@ -6,7 +6,7 @@ nav {
     gap: 16px;
 }
 nav a {
-    background-color: orange;
+    background-color: var(--color-primary);
     border-radius: 10px;
     border: 1px solid black;
     padding: 24px;

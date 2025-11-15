@@ -3,6 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --color-primary: #13b572;
+    --color-secondary: #fff;
+
+    --radius: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+
 .wrapper {
     background-color: rgba(0,0,0,0.3);
     width: 100%;
@@ -56,4 +66,13 @@
     100%{
         top: -100px;
     }
+}
+button {
+    color: var(--color-primary);
+}
+label {
+    color: var(--color-primary);
+}
+input {
+    color: var(--color-primary);
 }
